@@ -1,16 +1,16 @@
 # Routing=	
-Trie, Radix Tree, Regex
+- Trie, Radix Tree, Regex
 # Middleware=	
-Stack, Linked List
+- Stack, Linked List
 # Context=	
-Hash Map, Pool
+- Hash Map, Pool
 # Templates=	
-Trees, Recursion
+- Trees, Recursion
 # ORM=	
-Graphs, Query Builder
+- Graphs, Query Builder
 # Static files=	
-Cache (Heap, LRU)
+- Cache (Heap, LRU)
 # CLI=	
-Graphs, File Trees
+- Graphs, File Trees
 # Performance=	
-Queues, Buffers
+- Queues, Buffers
