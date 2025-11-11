@@ -15,7 +15,7 @@
 # Performance=	
 - Queues, Buffers
 
-🧠 Simplify It Mentally
+# 🧠 Simplify It Mentally
 
 🔍 Need to find things → Hash map
 
