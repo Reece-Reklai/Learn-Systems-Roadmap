@@ -1,195 +1,294 @@
-# Back-end-Framework-Roadmap
+🌲 Systems Engineering Roadmap
 
-🧭 GO “RAILS-LIKE” FRAMEWORK ROADMAP
-🩵 Phase 1 — Core Foundations
+A 3-Phase Path to Becoming a True Systems Engineer (Not Just a Programmer)
 
-Goal: Build the minimal web server that handles requests manually.
+This roadmap focuses on systems knowledge, not syntax.
+Each phase builds on the last, moving from backend fundamentals → low-level CS → distributed systems.
 
-Milestones
+🌱 Phase 1 — Go: Backend + Systems Mindset
 
-✅ Create an HTTP server with net/http
+Duration: 1–4 months
+Goal: Understand how the web works internally — not how to “use a framework.”
 
-✅ Implement a handler that returns a response
+1️⃣ Go Bottom-Up (No Frameworks)
 
-✅ Add routing logic (detect path, method)
+Only use the standard library:
 
-✅ Build your own router map (like { "GET:/users": handlerFn })
+net/http
 
-✅ Support path params → /users/:id
+Build your own router (path matching)
 
-✅ Add JSON encoding/decoding
+Build your own middleware system
 
-Example output milestone:
+Implement sessions/cookies manually
 
-app.Get("/users/:id", func(ctx *Context) {
-    ctx.JSON(200, map[string]string{"id": ctx.Param("id")})
-})
+Parse JSON manually once
 
+Implement your own context, logger, error handling
 
-🧠 Concepts learned: HTTP protocol, handler chains, URL parsing, request lifecycle.
+Why?
+You learn HTTP, networking, state, and request lifecycle — the system beneath every framework.
 
-⚙️ Phase 2 — Middleware System
+2️⃣ Learn Essential Backend Systems
 
-Goal: Add reusable request layers (logging, authentication, etc.)
+Learn in practice, not theory:
 
-Milestones
+HTTP / TCP
 
-✅ Create middleware chaining (e.g. next() pattern)
+SQL (no ORM)
 
-✅ Add example middleware (request logger)
+Concurrency (goroutines, channels, mutexes)
 
-✅ Add global and route-specific middleware
+Logging
 
-✅ Design a context object (ctx) shared across middleware & handlers
+Configuration systems
 
-Example milestone code:
+Process model (how servers start/stop)
 
-app.Use(Logger())
-app.Get("/secret", Auth(), SecretHandler)
+Why?
+This knowledge transfers to any backend language.
 
+3️⃣ Core Projects (Non-Negotiable)
 
-🧠 Concepts learned: handler stacks, composition, context passing, dependency injection.
+These shape your engineering instincts faster than any tutorial.
 
-🧩 Phase 3 — Templates and Static Files
+必 Core Project: Build Your Own Web Framework
 
-Goal: Render HTML and serve frontend assets.
+Include:
 
-Milestones
+Router
 
-✅ Integrate Go’s html/template
+Middleware pipeline
 
-✅ Create ctx.Render(templateName, data)
+Logger
 
-✅ Serve static files (CSS, JS, images) via a /static/ route
+Auth + session mgmt
 
-🧠 Concepts learned: template rendering, escaping, file serving.
+Context
 
-🪶 Phase 4 — Database & ORM Layer
+Error handling
 
-Goal: Add persistence (models, migrations, queries).
+This reveals the architecture all frameworks hide.
 
-Milestones
+Other Go Projects
 
-✅ Connect to PostgreSQL using database/sql
+Postgres-backed API (no frameworks)
 
-✅ Build a tiny query builder (like User.FindByID(1))
+CLI tool (like gh, kubectl, or a mini-docker)
 
-✅ Add migration commands (CLI or auto-migrate)
+Build a message-queue worker
 
-✅ Optional: Add struct ↔ table mapping like ActiveRecord
+Reverse proxy (buffering, forwarding, TLS)
 
-🧠 Concepts learned: SQL, schema management, database abstraction.
+Why?
+You’re learning system behavior, not Go-specific tricks.
 
-🧱 Phase 5 — CLI Tools & Project Scaffolding
+🌳 Phase 2 — Zig: Low-Level CS + OS Internals
 
-Goal: Create developer tooling.
+Duration: 4–10 months
+Goal: Understand memory, processes, syscalls, CPU model, allocators, and data structures.
 
-Milestones
+4️⃣ Why Zig?
 
-✅ Add CLI (e.g., go run main.go new project MyApp)
+Perfect for systems learning:
 
-✅ Generate folders: /models, /controllers, /views
+Manual allocators
 
-✅ Add “generate model/controller” commands
+Explicit memory control
 
-✅ Hot reload (optional)
+C-like control flow
 
-🧠 Concepts learned: file I/O, codegen, Go modules, automation.
+Simple language design
 
-🧭 Phase 6 — Sessions, Auth, Cookies
+Direct OS API access
 
-Goal: Handle user sessions and authentication.
+You will learn more CS in 3 months of Zig than 3 years of YouTube tutorials.
 
-Milestones
+5️⃣ Build These Systems (In Order)
+Level 1 — Fundamental Data Structures
 
-✅ Add cookie-based sessions (store user IDs)
+Implement:
 
-✅ Add middleware for ctx.CurrentUser()
+String
 
-✅ Implement simple login/logout routes
+ArrayList / Vector
 
-🧠 Concepts learned: cookies, encryption, middleware chaining.
+Hashmap
 
-⚡ Phase 7 — Developer Ergonomics
+Linked List
 
-Goal: Make the framework feel “batteries included”.
+Arena allocator
 
-Milestones
+Pool allocator
 
-✅ Auto-reload templates when changed
+Why?
+You learn memory layout, pointer math, and allocation strategy.
 
-✅ Pretty error pages
+Level 2 — Unix Core Utilities
 
-✅ Built-in JSON error helpers
+Rebuild simple versions of:
 
-✅ Environment config loading
+ls
 
-🧠 Concepts learned: developer experience design, ergonomics, abstraction tradeoffs.
+cat
 
-🌐 Phase 8 — Frontend Integration
+grep (simple pattern)
 
-Goal: Serve a simple SPA frontend or hybrid pages.
+cp / mv
 
-Milestones
+Why?
+You learn syscalls, file descriptors, I/O models.
 
-✅ Serve a small JS app or HTMX frontend
+Level 3 — Shell
 
-✅ Enable JSON API endpoints for AJAX requests
+Implement:
 
-✅ (Optional) Integrate WebSockets
+Parsing
 
-🧠 Concepts learned: modern web API design, CORS, SSE, realtime.
+execve
 
-🧰 Phase 9 — Packaging & Versioning
+Environment variables
 
-Goal: Make your framework reusable by others.
+Pipes (|)
 
-Milestones
+Redirection (>, <)
 
-✅ Export public API (package myweb)
+Basic job control
 
-✅ Add go.mod for versioning
+Why?
+You learn processes, signals, and POSIX.
 
-✅ Write docs and examples
+Level 4 — HTTP Server (Raw Sockets)
 
-✅ Publish to GitHub
+Implement:
 
-💎 Final Product (6-month vision)
+bind, listen, recv, send
 
-You end up with something like:
+HTTP request parsing
 
-package main
+Concurrency model
 
-import "myweb"
+epoll / kqueue (optional but extremely valuable)
 
-func main() {
-    app := myweb.New()
-    app.Use(myweb.Logger())
+Why?
+You understand the networking stack at the metal.
 
-    app.Get("/", func(c *myweb.Context) {
-        c.Render("index.html", map[string]string{"title": "Home"})
-    })
+Level 5 — Memory Allocator
 
-    app.Get("/users/:id", func(c *myweb.Context) {
-        c.JSON(200, map[string]any{"user": c.Param("id")})
-    })
+Build:
 
-    app.Run(":8080")
-}
+mmap allocator
 
+Free-list or slab design
 
-And internally you’ve built:
+Fragmentation strategy
 
-Routing
+Pointer metadata
 
-Middleware
+Why?
+This is the core of systems programming knowledge.
 
-Context API
+Level 6 — VM or Interpreter
 
-Template rendering
+Implement:
 
-Sessions
+Tokenizer
 
-ORM/migrations
+Recursive-descent parser
 
-CLI tooling
+Bytecode
+
+VM dispatch loop
+
+Stack frames
+
+Branching/jumps
+
+Why?
+You learn how languages actually work.
+
+Level 7 — Emulator (CHIP-8)
+
+Implement:
+
+Opcode decoding
+
+Graphics buffer
+
+Timers
+
+Memory map
+
+Why?
+This teaches CPU internals better than any book.
+
+🌲 Phase 3 — Distributed Systems + Advanced Architecture
+
+Optional but extremely valuable.
+
+After mastering:
+
+backend fundamentals
+
+OS + memory fundamentals
+
+concurrency + networking fundamentals
+
+You’re ready for:
+
+Caching layers
+
+Message brokers
+
+Job schedulers
+
+Consensus (Raft)
+
+Database internals
+
+Observability (logs/metrics/tracing)
+
+This is where you start thinking like a senior engineer.
+
+🧭 Summary: Systems, Not Programming
+Phase 1 — Go (Backend Systems)
+
+✔ HTTP
+✔ Server architecture
+✔ Routing
+✔ Middleware
+✔ SQL
+✔ Concurrency
+✔ Build a mini-framework
+✔ CLI tools
+✔ No frameworks
+
+Phase 2 — Zig (Computer Systems)
+
+✔ Memory + allocators
+✔ Syscalls
+✔ Processes
+✔ Networking
+✔ Shell
+✔ Coreutils
+✔ VM / interpreter
+✔ Emulator
+
+Phase 3 — Distributed Systems
+
+✔ Caching
+✔ Queues
+✔ Coordination
+✔ Database internals
+
+🎉 What This Produces
+
+A strong backend engineer
+
+A strong systems engineer
+
+Someone who understands computers end-to-end
+
+Someone who isn’t limited by frameworks, languages, or tutorials
+
+Most developers never reach this level because they learn languages, not systems.
