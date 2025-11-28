@@ -281,14 +281,3 @@ Phase 3 — Distributed Systems
 ✔ Coordination
 ✔ Database internals
 
-🎉 What This Produces
-
-A strong backend engineer
-
-A strong systems engineer
-
-Someone who understands computers end-to-end
-
-Someone who isn’t limited by frameworks, languages, or tutorials
-
-Most developers never reach this level because they learn languages, not systems.
