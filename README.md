@@ -2,6 +2,10 @@
 Web Development Fundamentals (Golang) 
 ----------------------------------------------------------------------------
 
+Type of backend ideas: 
+
+-> Rest APIs / Web sockets (real-time) / microservice / reverse proxy (edge server)
+
 To build a solid foundation in web development, focus on these core concepts:
 
 ⚙️ Networking & Protocols
