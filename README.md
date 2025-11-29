@@ -1,283 +1,139 @@
-🌲 Systems Engineering Roadmap
+----------------------------------------------------------------------------
+Web Development Fundamentals (Golang) 
+----------------------------------------------------------------------------
 
-A 3-Phase Path to Becoming a True Systems Engineer (Not Just a Programmer)
+To build a solid foundation in web development, focus on these core concepts:
 
-This roadmap focuses on systems knowledge, not syntax.
-Each phase builds on the last, moving from backend fundamentals → low-level CS → distributed systems.
+⚙️ Networking & Protocols
 
-🌱 Phase 1 — Go: Backend + Systems Mindset
+Understand how the HTTP protocol works (requests, responses, headers, status codes)
 
-Duration: 1–4 months
-Goal: Understand how the web works internally — not how to “use a framework.”
+Learn basic networking principles (IP, DNS, routing, ports)
 
-1️⃣ Go Bottom-Up (No Frameworks)
+🧳 Containers & Deployment
 
-Only use the standard library:
+Gain experience with containers
 
-net/http
+Learn the Docker / OCI ecosystem
 
-Build your own router (path matching)
+Explore how applications are built, packaged, and deployed
 
-Build your own middleware system
+🗄️ Data & Persistence
 
-Implement sessions/cookies manually
+Learn how databases operate (SQL & NoSQL)
 
-Parse JSON manually once
+Write real SQL queries (even if you typically use an ORM)
 
-Implement your own context, logger, error handling
+Understand message queues and asynchronous communication patterns
 
-Why?
-You learn HTTP, networking, state, and request lifecycle — the system beneath every framework.
+🧠 Modern Front-End Challenges
 
-2️⃣ Learn Essential Backend Systems
+Build reactive UIs with vanilla JavaScript + DOM API first
 
-Learn in practice, not theory:
+Then learn frameworks like React to understand:
 
-HTTP / TCP
+State management
 
-SQL (no ORM)
+Efficient DOM updating (virtual DOM / diffing)
 
-Concurrency (goroutines, channels, mutexes)
+Component-based architecture
 
-Logging
+What problems frameworks actually solve
 
-Configuration systems
+-------------------------------------------------------------------------
+Zig Roadmap
+-------------------------------------------------------------------------
 
-Process model (how servers start/stop)
+1️⃣ Core Data Structures
 
-Why?
-This knowledge transfers to any backend language.
+Implement your own foundational library (to be reused in future projects):
 
-3️⃣ Core Projects (Non-Negotiable)
+String type
 
-These shape your engineering instincts faster than any tutorial.
+Dynamic array / vector
 
-必 Core Project: Build Your Own Web Framework
+Hash map
 
-Include:
+2️⃣ Core Utilities (Coreutils)
 
-Router
+Re-create essential Unix command-line tools:
 
-Middleware pipeline
-
-Logger
-
-Auth + session mgmt
-
-Context
-
-Error handling
-
-This reveals the architecture all frameworks hide.
-
-Other Go Projects
-
-Postgres-backed API (no frameworks)
-
-CLI tool (like gh, kubectl, or a mini-docker)
-
-Build a message-queue worker
-
-Reverse proxy (buffering, forwarding, TLS)
-
-Why?
-You’re learning system behavior, not Go-specific tricks.
-
-🌳 Phase 2 — Zig: Low-Level CS + OS Internals
-
-Duration: 4–10 months
-Goal: Understand memory, processes, syscalls, CPU model, allocators, and data structures.
-
-4️⃣ Why Zig?
-
-Perfect for systems learning:
-
-Manual allocators
-
-Explicit memory control
-
-C-like control flow
-
-Simple language design
-
-Direct OS API access
-
-You will learn more CS in 3 months of Zig than 3 years of YouTube tutorials.
-
-5️⃣ Build These Systems (In Order)
-Level 1 — Fundamental Data Structures
-
-Implement:
-
-String
-
-ArrayList / Vector
-
-Hashmap
-
-Linked List
-
-Arena allocator
-
-Pool allocator
-
-Why?
-You learn memory layout, pointer math, and allocation strategy.
-
-Level 2 — Unix Core Utilities
-
-Rebuild simple versions of:
+cat / less
 
 ls
 
-cat
+mv / cp
 
-grep (simple pattern)
+find / grep
+For grep: simple globbing or a custom lightweight pattern engine is fine.
 
-cp / mv
+3️⃣ Shell
 
-Why?
-You learn syscalls, file descriptors, I/O models.
+A great intro to interpreters and system APIs:
 
-Level 3 — Shell
+Environments + environment variables
 
-Implement:
+Subprocesses (fork, exec)
 
-Parsing
+Signals + traps
 
-execve
+String interpolation & variable expansion
 
-Environment variables
+POSIX compliance basics
 
-Pipes (|)
+Why cd must be a shell builtin
 
-Redirection (>, <)
+Familiarity with libc & Linux syscalls
 
-Basic job control
+4️⃣ HTTP/1.0 Server
 
-Why?
-You learn processes, signals, and POSIX.
+Use raw Linux sockets:
 
-Level 4 — HTTP Server (Raw Sockets)
+bind, accept, send, recv
 
-Implement:
+Non-blocking accept
 
-bind, listen, recv, send
+Prefer epoll over one thread per connection
 
-HTTP request parsing
+Bonus: connection pooling with LRU caching
 
-Concurrency model
+5️⃣ Interpreter / Compiler
 
-epoll / kqueue (optional but extremely valuable)
+Can be any language — for fun & learning:
 
-Why?
-You understand the networking stack at the metal.
+Learn recursive descent parsing
 
-Level 5 — Memory Allocator
+Optional: design your own bytecode + VM
 
-Build:
+Understand labels, jump tables, loops, branches
 
-mmap allocator
+Suggested resource: Writing an Interpreter in Go by Thorsten Ball
 
-Free-list or slab design
+6️⃣ Memory Allocator (C)
 
-Fragmentation strategy
+Build a custom allocator:
 
-Pointer metadata
+Use mmap for memory regions
 
-Why?
-This is the core of systems programming knowledge.
+Learn fragmentation & book-keeping trade-offs
 
-Level 6 — VM or Interpreter
+Reference: Ginger Bill’s allocator series
 
-Implement:
+7️⃣ Emulator Projects
 
-Tokenizer
+Understand CPU internals & bit manipulation:
 
-Recursive-descent parser
+Beginner: Chip-8
 
-Bytecode
+Advanced: Intel 8080, MOS 6502
 
-VM dispatch loop
+8️⃣ Additional Project Ideas
 
-Stack frames
+Optional but valuable systems challenges:
 
-Branching/jumps
+CPU cache simulator
 
-Why?
-You learn how languages actually work.
+TUI text editor
 
-Level 7 — Emulator (CHIP-8)
-
-Implement:
-
-Opcode decoding
-
-Graphics buffer
-
-Timers
-
-Memory map
-
-Why?
-This teaches CPU internals better than any book.
-
-🌲 Phase 3 — Distributed Systems + Advanced Architecture
-
-Optional but extremely valuable.
-
-After mastering:
-
-backend fundamentals
-
-OS + memory fundamentals
-
-concurrency + networking fundamentals
-
-You’re ready for:
-
-Caching layers
-
-Message brokers
-
-Job schedulers
-
-Consensus (Raft)
-
-Database internals
-
-Observability (logs/metrics/tracing)
-
-This is where you start thinking like a senior engineer.
-
-🧭 Summary: Systems, Not Programming
-Phase 1 — Go (Backend Systems)
-
-✔ HTTP
-✔ Server architecture
-✔ Routing
-✔ Middleware
-✔ SQL
-✔ Concurrency
-✔ Build a mini-framework
-✔ CLI tools
-✔ No frameworks
-
-Phase 2 — Zig (Computer Systems)
-
-✔ Memory + allocators
-✔ Syscalls
-✔ Processes
-✔ Networking
-✔ Shell
-✔ Coreutils
-✔ VM / interpreter
-✔ Emulator
-
-Phase 3 — Distributed Systems
-
-✔ Caching
-✔ Queues
-✔ Coordination
-✔ Database internals
-
+Stackful coroutine-based async I/O library
+(e.g., Rust + io_uring, goroutine-style)
